@@ -238,6 +238,40 @@
     .service-icon svg { width: 22px; height: 22px; }
     .service-body h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 8px; font-weight: 700; }
     .service-body p { color: var(--text-light); font-size: 0.93rem; }
+    .service-call {
+        display: inline-flex; align-items: center; gap: 8px;
+        margin-top: 14px; color: var(--accent); font-weight: 700; font-size: .9rem;
+        text-decoration: none;
+    }
+    .service-call svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .service-call:hover { color: var(--accent-dark); text-decoration: underline; }
+
+    .svc-toggle {
+        display: inline-flex; align-items: center; gap: 5px;
+        margin-top: 10px; background: none; border: none; cursor: pointer;
+        color: var(--primary); font-weight: 700; font-size: .82rem;
+        text-decoration: underline; padding: 0; font-family: inherit;
+    }
+    .svc-toggle svg { width: 13px; height: 13px; flex-shrink: 0; transition: transform .25s; }
+    .svc-toggle:hover { color: var(--accent); }
+    .svc-toggle.open svg { transform: rotate(180deg); }
+    .svc-form-wrap { display: none; margin-top: 12px; }
+    .svc-form-wrap.open { display: block; }
+    .svc-form-row { display: flex; flex-direction: column; gap: 10px; margin-bottom: 10px; }
+    .svc-field { display: flex; flex-direction: column; gap: 4px; }
+    .svc-field label { font-size: .75rem; font-weight: 700; color: var(--primary); }
+    .svc-field input, .svc-field textarea {
+        border: 1px solid var(--border); border-radius: 6px;
+        padding: 9px 12px; font-size: .85rem; font-family: inherit; width: 100%; resize: vertical;
+    }
+    .svc-field input:focus, .svc-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .svc-submit { width: 100%; font-size: .85rem; padding: 10px 18px; }
+    .svc-form-success {
+        display: none; align-items: center; gap: 8px;
+        color: var(--success); font-weight: 700; font-size: .82rem; padding: 6px 0;
+    }
+    .svc-form-success.show { display: flex; }
+    .svc-form-success svg { width: 17px; height: 17px; flex-shrink: 0; }
 
     .phone-cta {
         margin-top: 40px;
@@ -389,6 +423,8 @@
     /* CONTACT FORM */
     .contact-wrap { max-width: 760px; margin: 0 auto; }
     .contact-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .devis-form-wrap { display: none; margin-top: 24px; }
+    .devis-form-wrap.open { display: block; }
     .contact-options { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-bottom: 24px; }
     .contact-option {
         display: flex; align-items: center; gap: 14px;
@@ -446,6 +482,45 @@
     .footer-links a:hover { color: #fff; }
     .footer-copy { font-size: .82rem; opacity: .75; }
 
+    .floating-call {
+        position: fixed;
+        right: 24px;
+        bottom: 24px;
+        z-index: 300;
+        width: 58px;
+        height: 58px;
+        border-radius: 50%;
+        background: var(--accent);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(0,0,0,.28);
+        transition: transform .25s, background .25s;
+    }
+    .floating-call:hover { background: var(--accent-dark); transform: scale(1.08); }
+    .floating-call svg { width: 26px; height: 26px; position: relative; z-index: 2; }
+    .floating-call-pulse {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: .55;
+        animation: floatingCallPulse 2.2s ease-out infinite;
+    }
+    @keyframes floatingCallPulse {
+        0% { transform: scale(1); opacity: .55; }
+        100% { transform: scale(1.9); opacity: 0; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+        .floating-call-pulse { animation: none; }
+    }
+    @media (max-width: 600px) {
+        .floating-call { width: 52px; height: 52px; right: 16px; bottom: 16px; }
+        .floating-call svg { width: 23px; height: 23px; }
+    }
+
     @media (max-width: 900px) {
         .expertise-grid, .zone-grid { grid-template-columns: 1fr; }
         .expertise-media img { height: 320px; }
@@ -459,18 +534,22 @@
 </head>
 <body>
 
+<a href="tel:+33620515350" class="floating-call" aria-label="Appeler maintenant">
+    <span class="floating-call-pulse"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+</a>
+
 <div class="topbar">
     <div class="container">
         <div class="topbar-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             Agréé toutes assurances
         </div>
         <div class="topbar-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             Devis gratuit
         </div>
         <div class="topbar-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
             Intervention 24h/24 - 7j/7
         </div>
         <div class="topbar-item">
@@ -497,11 +576,10 @@
             <a href="#faq">FAQ</a>
         </nav>
         <a href="#devis" class="btn btn-accent">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
             Demande de devis
         </a>
         <button class="nav-toggle" aria-label="Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
         </button>
     </div>
 </header>
@@ -514,77 +592,12 @@
         <p class="lead">Intervention en moins de 30 minutes, devis immédiat, agréés toutes assurances. Un diagnostic clair et un tarif annoncé avant toute intervention.</p>
         <div class="hero-actions">
             <a href="#devis" class="btn btn-accent">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
                 Demande de devis
             </a>
             <a href="#services" class="btn btn-outline">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                 Découvrir nos services
             </a>
-        </div>
-    </div>
-</section>
-
-<section id="services">
-    <div class="container">
-        <div class="section-head">
-            <span class="eyebrow">Nos interventions et services</span>
-            <h2>Devis sans engagement établi sur place après diagnostic</h2>
-        </div>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-media"><img src="verouiller.jpg" alt="Ouverture de porte"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
-                    <h3>Ouverture de porte</h3>
-                    <p>Intervention rapide pour ouvrir votre porte sans l'abîmer, que la clé soit perdue, cassée ou restée à l'intérieur. Service disponible en urgence 24h/24.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-media"><img src="porte claquer.jpeg" alt="Changement de serrure"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
-                    <h3>Changement de serrure</h3>
-                    <p>Remplacement de votre ancienne serrure par un modèle plus fiable, adapté à votre porte et conforme aux normes de sécurité actuelles.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-media"><img src="serrure.jpeg" alt="Installation de serrure de sécurité"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
-                    <h3>Installation de serrure de sécurité</h3>
-                    <p>Pose de serrures multipoints ou renforcées pour améliorer la protection de votre logement et réduire les risques d'effraction.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-media"><img src="effraction.jpeg" alt="Réparation après effraction"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 15l2 2 4-4"/></svg></div>
-                    <h3>Réparation après effraction</h3>
-                    <p>Remise en état de votre porte et remplacement des éléments endommagés après une tentative d'intrusion ou un cambriolage.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-media"><img src="blindage.jpeg" alt="Blindage de porte"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
-                    <h3>Blindage de porte</h3>
-                    <p>Renforcement complet de votre porte existante pour augmenter sa résistance, améliorer l'isolation et sécuriser durablement votre habitation.</p>
-                </div>
-            </div>
-            <div class="service-card">
-                <div class="service-media"><img src="rideaux metalique.jpg" alt="Réparation de rideau métallique"></div>
-                <div class="service-body">
-                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="17" x2="21" y2="17"/></svg></div>
-                    <h3>Réparation de rideau métallique</h3>
-                    <p>Dépannage et remise en service des rideaux métalliques et volets de sécurité pour commerces et professionnels, après blocage, panne moteur ou choc.</p>
-                </div>
-            </div>
-        </div>
-        <div class="phone-cta">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            <span>Besoin d'une intervention immédiate à Nice ?</span>
-            <a href="tel:+33620515350">06 20 51 53 50</a>
         </div>
     </div>
 </section>
@@ -614,9 +627,362 @@
             <div class="insurer-logo"><img src="Groupama.png" alt="Groupama"></div>
             <div class="insurer-logo"><img src="Generali.png" alt="Generali"></div>
             </div>
+        <div style="text-align:center;margin-top:44px;">
+            <a href="#devis" class="btn btn-accent">
+                Demande de devis
+            </a>
+        </div>
         </div>
     </div>
 </section>
+
+<section id="services">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Nos interventions et services</span>
+            <h2>Devis sans engagement établi sur place après diagnostic</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-media"><img src="verouiller.jpg" alt="Ouverture de porte"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    <h3>Ouverture de porte</h3>
+                    <p>Intervention rapide pour ouvrir votre porte sans l'abîmer, que la clé soit perdue, cassée ou restée à l'intérieur. Service disponible en urgence 24h/24.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Ouverture de porte">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Ouverture de porte">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="porte claquer.jpeg" alt="Changement de serrure"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="15" r="4"/><path d="M10.5 12.5L21 2M17 6l3 3M14 9l2.5 2.5"/></svg></div>
+                    <h3>Changement de serrure</h3>
+                    <p>Remplacement de votre ancienne serrure par un modèle plus fiable, adapté à votre porte et conforme aux normes de sécurité actuelles.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Changement de serrure">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Changement de serrure">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="serrure.jpeg" alt="Installation de serrure de sécurité"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+                    <h3>Installation de serrure de sécurité</h3>
+                    <p>Pose de serrures multipoints ou renforcées pour améliorer la protection de votre logement et réduire les risques d'effraction.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Installation de serrure de sécurité">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Installation de serrure de sécurité">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="effraction.jpeg" alt="Réparation après effraction"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 15l2 2 4-4"/></svg></div>
+                    <h3>Réparation après effraction</h3>
+                    <p>Remise en état de votre porte et remplacement des éléments endommagés après une tentative d'intrusion ou un cambriolage.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Réparation après effraction">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Réparation après effraction">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="blindage.jpeg" alt="Blindage de porte"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3>Blindage de porte</h3>
+                    <p>Renforcement complet de votre porte existante pour augmenter sa résistance, améliorer l'isolation et sécuriser durablement votre habitation.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Blindage de porte">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Blindage de porte">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="rideaux metalique.jpg" alt="Réparation de rideau métallique"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="3" y1="13" x2="21" y2="13"/><line x1="3" y1="17" x2="21" y2="17"/></svg></div>
+                    <h3>Réparation de rideau métallique</h3>
+                    <p>Dépannage et remise en service des rideaux métalliques et volets de sécurité pour commerces et professionnels, après blocage, panne moteur ou choc.</p>
+                    <a href="tel:+33620515350" class="service-call"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>06 20 51 53 50</a>
+                <button type="button" class="svc-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    Demander un devis pour ce service
+                </button>
+                <div class="svc-form-wrap">
+                    <form class="svc-form" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                        <input type="hidden" name="_subject" value="Demande de devis - Réparation de rideau métallique">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                        <input type="hidden" name="Service" value="Réparation de rideau métallique">
+                        <div class="svc-form-row">
+                            <div class="svc-field">
+                                <label>Votre nom</label>
+                                <input type="text" name="Nom" placeholder="Nom et prénom" required>
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre téléphone</label>
+                                <input type="tel" name="Téléphone" placeholder="06 12 34 56 78" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                            </div>
+                            <div class="svc-field">
+                                <label>Votre demande</label>
+                                <textarea name="Message" placeholder="Décrivez votre besoin pour ce service..." rows="2"></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-accent svc-submit">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer
+                        </button>
+                    </form>
+                    <div class="svc-form-success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                        Merci, nous vous recontactons rapidement.
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <div class="phone-cta">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>Besoin d'une intervention immédiate à Nice ?</span>
+            <a href="tel:+33620515350">06 20 51 53 50</a>
+        </div>
+    </div>
+</section>
+
+<section id="devis">
+    <div class="container contact-wrap">
+        <div class="section-head">
+            <span class="eyebrow">Contactez-nous</span>
+            <h2>Demandez votre devis gratuit</h2>
+        </div>
+        <div class="contact-options">
+            <a href="tel:+33620515350" class="contact-option">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+                <div><strong>Appelez-nous</strong><span>06 20 51 53 50</span></div>
+            </a>
+            <a href="mailto:yassin.ounnas8@gmail.com" class="contact-option">
+                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+                <div><strong>Envoyez un e-mail</strong><span>yassin.ounnas8@gmail.com</span></div>
+            </a>
+        </div>
+        <div class="contact-card">
+            <button type="button" class="btn btn-accent" id="devisToggle" style="width:100%;">
+                <span id="devisToggleLabel">Demande de devis</span>
+            </button>
+            <div class="devis-form-wrap" id="devisFormWrap">
+                <form id="devisForm" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Serrurerie 06">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="f-name">Votre nom</label>
+                        <input type="text" id="f-name" name="Nom" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="f-firstname">Votre prénom</label>
+                        <input type="text" id="f-firstname" name="Prénom">
+                    </div>
+                    <div class="form-field">
+                        <label for="f-phone">Votre téléphone</label>
+                        <input type="tel" id="f-phone" name="Téléphone" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                    </div>
+                    <div class="form-field">
+                        <label for="f-email">Votre e-mail</label>
+                        <input type="email" id="f-email" name="Email" required>
+                    </div>
+                    <div class="form-field full">
+                        <label for="f-message">Décrivez votre problème</label>
+                        <textarea id="f-message" name="Message" rows="4"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-accent" style="width:100%;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer ma demande
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="form-success" id="formSuccess">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <h3>Merci pour votre demande</h3>
+                <p>Un membre de notre équipe vous recontactera dans les plus brefs délais.</p>
+            </div>
+            </div>
+            <p class="form-note">Réponse rapide, devis sans engagement.</p>
+        </div>
+    </div>
+</section>
+
+
 
 <section>
     <div class="container">
@@ -641,6 +1007,11 @@
                 <p>Notre engagement est simple : efficacité ou vous ne payez rien. Si l'ouverture, la réparation ou le déblocage n'est pas résolu, l'intervention est entièrement prise en charge.</p>
             </div>
         </div>
+        <div style="text-align:center;margin-top:44px;">
+            <a href="#devis" class="btn btn-accent">
+                Demande de devis
+            </a>
+        </div>
     </div>
 </section>
 
@@ -650,7 +1021,7 @@
             <div class="expertise-media">
                 <img src="inter 30 mn.jpg" alt="Serrurier professionnel">
                 <div class="expertise-badge">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
                     <div><strong>Agréé assurances</strong><span>Toutes compagnies</span></div>
                 </div>
             </div>
@@ -661,25 +1032,24 @@
                 <p>Disponibles 24h/24 et 7j/7, nos artisans se déplacent en urgence comme sur rendez-vous, selon vos besoins, avec des tarifs transparents annoncés à l'avance.</p>
                 <div class="feature-mini-grid">
                     <div class="feature-mini">
-                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                         <div><strong>Équipe de pros</strong><span>Techniciens qualifiés</span></div>
                     </div>
                     <div class="feature-mini">
-                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                         <div><strong>Devis transparent</strong><span>Sans engagement</span></div>
                     </div>
                     <div class="feature-mini">
-                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                         <div><strong>Agréé assurance</strong><span>Reconnu par les compagnies</span></div>
                     </div>
                     <div class="feature-mini">
-                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
                         <div><strong>Intervention rapide</strong><span>24h/24 et 7j/7</span></div>
                     </div>
                 </div>
                 <a href="#devis" class="btn btn-dark">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    Demande de devis
+                        Demande de devis
                 </a>
             </div>
         </div>
@@ -736,6 +1106,11 @@
                 </div>
             </div>
         </div>
+        <div style="text-align:center;margin-top:44px;">
+            <a href="#devis" class="btn btn-accent">
+                Demande de devis
+            </a>
+        </div>
     </div>
 </section>
 
@@ -747,14 +1122,13 @@
                 <h2 style="font-size:2.1rem;color:var(--primary);font-weight:800;margin-bottom:16px;">Nos zones d'intervention</h2>
                 <p style="color:var(--text-light);margin-bottom:26px;">Nos équipes se déplacent à Nice et dans un rayon de 25 km pour intervenir rapidement, où que vous soyez.</p>
                 <a href="#devis" class="btn btn-dark">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                    Demande de devis
+                        Demande de devis
                 </a>
             </div>
             <div class="zone-panel">
                 <div class="zone-panel-inner">
                     <div class="zone-pin">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
                         <strong>Nice et alentours (06)</strong>
                     </div>
                     <ul class="town-list">
@@ -773,66 +1147,6 @@
     </div>
 </section>
 
-<section id="devis">
-    <div class="container contact-wrap">
-        <div class="section-head">
-            <span class="eyebrow">Contactez-nous</span>
-            <h2>Demandez votre devis gratuit</h2>
-        </div>
-        <div class="contact-options">
-            <a href="tel:+33620515350" class="contact-option">
-                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                <div><strong>Appelez-nous</strong><span>06 20 51 53 50</span></div>
-            </a>
-            <a href="mailto:yassin.ounnas8@gmail.com" class="contact-option">
-                <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                <div><strong>Envoyez un e-mail</strong><span>yassin.ounnas8@gmail.com</span></div>
-            </a>
-        </div>
-        <div class="contact-card">
-            <form id="devisForm" action="https://formsubmit.co/yassin.ounnas8@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="Nouvelle demande de devis - Serrurerie 06">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-                <div class="form-grid">
-                    <div class="form-field">
-                        <label for="f-name">Votre nom</label>
-                        <input type="text" id="f-name" name="Nom" required>
-                    </div>
-                    <div class="form-field">
-                        <label for="f-firstname">Votre prénom</label>
-                        <input type="text" id="f-firstname" name="Prénom">
-                    </div>
-                    <div class="form-field">
-                        <label for="f-phone">Votre téléphone</label>
-                        <input type="tel" id="f-phone" name="Téléphone" required pattern="[0-9()#&amp;+*\-=.\s]+">
-                    </div>
-                    <div class="form-field">
-                        <label for="f-email">Votre e-mail</label>
-                        <input type="email" id="f-email" name="Email" required>
-                    </div>
-                    <div class="form-field full">
-                        <label for="f-message">Décrivez votre problème</label>
-                        <textarea id="f-message" name="Message" rows="4"></textarea>
-                    </div>
-                    <div class="form-submit">
-                        <button type="submit" class="btn btn-accent" style="width:100%;">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-                            Envoyer ma demande
-                        </button>
-                    </div>
-                </div>
-            </form>
-            <div class="form-success" id="formSuccess">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                <h3>Merci pour votre demande</h3>
-                <p>Un membre de notre équipe vous recontactera dans les plus brefs délais.</p>
-            </div>
-            <p class="form-note">Réponse rapide, devis sans engagement.</p>
-        </div>
-    </div>
-</section>
 
 <section class="section-alt" id="faq">
     <div class="container">
@@ -843,38 +1157,43 @@
             <div class="faq-item">
                 <button class="faq-q">
                     Comment savoir si je dois remplacer ou réparer ma serrure ?
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
                 <div class="faq-a"><p>La réparation suffit souvent pour une serrure bloquée, grippée ou légèrement endommagée. En revanche, un remplacement est conseillé si le mécanisme est trop usé, forcé après une tentative d'effraction ou si la serrure n'est plus suffisamment sécurisée. Le serrurier vous guide après diagnostic.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">
                     En combien de temps un serrurier peut-il intervenir en urgence ?
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
                 <div class="faq-a"><p>En général, un serrurier peut se déplacer en 20 à 30 minutes selon votre localisation. L'objectif est de sécuriser les lieux rapidement et d'agir sans attendre, surtout en cas de porte claquée, clé cassée ou tentative d'effraction.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">
                     Pouvez-vous ouvrir une porte sans l'abîmer ?
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
                 <div class="faq-a"><p>Oui, dans la plupart des cas. Les serruriers utilisent des techniques non destructives (radio, crochetage, outils adaptés) pour ouvrir une porte sans causer de dégâts. Seules les serrures très endommagées ou ultra-sécurisées peuvent nécessiter un perçage.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">
                     Quels types de serrures pouvez-vous installer ou remplacer ?
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
                 <div class="faq-a"><p>Le serrurier installe ou remplace tous les modèles : serrures multipoints, cylindres européens, serrures carénées, blindages de porte, verrous, serrures certifiées A2P, et tous systèmes de sécurité modernes.</p></div>
             </div>
             <div class="faq-item">
                 <button class="faq-q">
                     Intervenez-vous dans toutes les communes autour de Nice ?
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
                 </button>
                 <div class="faq-a"><p>Oui, nos serruriers interviennent à Nice ainsi que dans un rayon de 25 km, notamment à Saint-Laurent-du-Var, Cagnes-sur-Mer, Villeneuve-Loubet et dans les communes voisines. Contactez-nous pour confirmer la disponibilité dans votre secteur.</p></div>
             </div>
+        </div>
+        <div style="text-align:center;margin-top:44px;">
+            <a href="#devis" class="btn btn-accent">
+                Demande de devis
+            </a>
         </div>
     </div>
 </section>
@@ -891,6 +1210,47 @@
 </footer>
 
 <script>
+    var devisToggle = document.getElementById('devisToggle');
+    var devisFormWrap = document.getElementById('devisFormWrap');
+    var devisToggleLabel = document.getElementById('devisToggleLabel');
+    devisToggle.addEventListener('click', function () {
+        var isOpen = devisFormWrap.classList.toggle('open');
+        devisToggleLabel.textContent = isOpen ? 'Masquer le formulaire' : 'Demande de devis';
+        if (isOpen) {
+            devisFormWrap.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+    });
+
+    document.querySelectorAll('.svc-toggle').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var wrap = btn.nextElementSibling;
+            wrap.classList.toggle('open');
+            btn.classList.toggle('open');
+        });
+    });
+
+    document.querySelectorAll('.svc-form').forEach(function (form) {
+        form.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var formData = new FormData(form);
+            var wrap = form.closest('.svc-form-wrap');
+            var success = wrap.querySelector('.svc-form-success');
+            fetch('https://formsubmit.co/ajax/yassin.ounnas8@gmail.com', {
+                method: 'POST',
+                headers: { 'Accept': 'application/json' },
+                body: formData
+            })
+            .then(function (res) { return res.json(); })
+            .then(function () {
+                form.style.display = 'none';
+                success.classList.add('show');
+            })
+            .catch(function () {
+                alert("Une erreur est survenue. Merci de nous appeler directement au 06 20 51 53 50.");
+            });
+        });
+    });
+
     document.querySelectorAll('.faq-q').forEach(function (btn) {
         btn.addEventListener('click', function () {
             var item = btn.closest('.faq-item');
