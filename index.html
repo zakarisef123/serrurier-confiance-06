@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Serrurerie 85 | Dépannage & Sécurité 24h/24 - Vendée</title>
+<meta name="description" content="Serrurier professionnel en Vendée, agréé toutes assurances. Ouverture de porte, changement de serrure, blindage, réparation après effraction. Devis gratuit, intervention rapide.">
+<meta name="robots" content="index, follow">
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='16' cy='16' r='9' fill='%231c1f26'/%3E%3Ccircle cx='16' cy='16' r='4' fill='white'/%3E%3Crect x='14' y='16' width='4' height='16' rx='1' fill='%231c1f26'/%3E%3Crect x='19' y='24' width='7' height='4' rx='1' fill='%23e63946'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Locksmith",
+    "name": "Serrurerie 85",
+    "description": "Serrurier professionnel en Vendée, agréé toutes assurances, dépannage 24h/24, intervention rapide.",
+    "openingHours": "Mo-Su 00:00-23:59",
+    "priceRange": "€€",
+    "areaServed": "Vendée"
+}
+</script>
+
+<style>
+    :root {
+        --primary: #1c1f26;
+        --primary-dark: #0d0f13;
+        --accent: #e63946;
+        --accent-dark: #c62839;
+        --success: #2a9d8f;
+        --success-dark: #1f7a70;
+        --text: #21242b;
+        --text-light: #666d78;
+        --border: #e4e6ea;
+        --bg-alt: #f5f6f8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text);
+        background: #fff;
+    }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 20px; }
+    a { color: inherit; }
+    img { max-width: 100%; display: block; }
+    section { padding: 90px 20px; }
+
+    /* TOP BAR */
+    .topbar {
+        background: var(--primary-dark);
+        color: #cfd3da;
+        font-size: 0.85rem;
+        padding: 9px 0;
+    }
+    .topbar .container {
+        display: flex;
+        justify-content: center;
+        gap: 34px;
+        flex-wrap: wrap;
+    }
+    .topbar-item { display: flex; align-items: center; gap: 7px; }
+    .topbar svg { width: 15px; height: 15px; flex-shrink: 0; }
+    .dot { animation: blink 1.8s ease-in-out infinite; }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:.3;} }
+
+    /* HEADER */
+    header {
+        background: #fff;
+        border-bottom: 1px solid var(--border);
+        position: sticky;
+        top: 0;
+        z-index: 200;
+    }
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 0;
+        gap: 20px;
+    }
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        font-weight: 800;
+        font-size: 1.25rem;
+        color: var(--primary);
+        letter-spacing: 0.5px;
+        white-space: nowrap;
+    }
+    .brand svg { width: 34px; height: 34px; flex-shrink: 0; }
+    .brand span { color: var(--accent); }
+    nav.main-nav { display: flex; gap: 30px; }
+    .main-nav a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.95rem;
+        padding: 6px 0;
+        border-bottom: 2px solid transparent;
+        transition: all .25s;
+    }
+    .main-nav a:hover { color: var(--accent); border-color: var(--accent); }
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 9px;
+        border: none;
+        cursor: pointer;
+        border-radius: 6px;
+        font-weight: 700;
+        text-decoration: none;
+        transition: all .25s;
+        white-space: nowrap;
+    }
+    .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .btn-accent { background: var(--accent); color: #fff; padding: 13px 26px; font-size: 0.95rem; }
+    .btn-accent:hover { background: var(--accent-dark); transform: translateY(-2px); }
+    .btn-dark { background: var(--primary); color: #fff; padding: 13px 26px; font-size: 0.95rem; }
+    .btn-dark:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: #fff; padding: 13px 26px; font-size: 0.95rem; border: 2px solid rgba(255,255,255,.55); }
+    .btn-outline:hover { background: rgba(255,255,255,.12); border-color: #fff; }
+    .btn-outline-dark { background: transparent; color: var(--primary); padding: 13px 26px; font-size: 0.95rem; border: 2px solid var(--border); }
+    .btn-outline-dark:hover { border-color: var(--primary); }
+
+    .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
+    .nav-toggle svg { width: 28px; height: 28px; color: var(--primary); }
+
+    /* HERO */
+    .hero {
+        position: relative;
+        color: #fff;
+        overflow: hidden;
+        min-height: 560px;
+        display: flex;
+        align-items: center;
+    }
+    .hero-bg {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: 1;
+    }
+    .hero::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: linear-gradient(120deg, rgba(13,15,19,.92) 0%, rgba(28,31,38,.78) 55%, rgba(230,57,70,.55) 100%);
+        z-index: 2;
+    }
+    .hero-content { position: relative; z-index: 3; max-width: 720px; padding: 90px 20px; }
+    .eyebrow {
+        display: inline-block;
+        color: var(--accent);
+        background: rgba(230,57,70,.15);
+        border: 1px solid rgba(230,57,70,.4);
+        padding: 6px 16px;
+        border-radius: 20px;
+        font-weight: 700;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 18px;
+    }
+    .hero h1 { font-size: 2.9rem; font-weight: 800; line-height: 1.2; margin-bottom: 16px; }
+    .hero p.lead { font-size: 1.15rem; opacity: .92; margin-bottom: 30px; max-width: 560px; }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+    /* SECTION HEADS */
+    .section-head { text-align: center; max-width: 700px; margin: 0 auto 50px; }
+    .section-head .eyebrow { background: rgba(230,57,70,.08); }
+    .section-head h2 { font-size: 2.1rem; color: var(--primary); font-weight: 800; }
+    .section-alt { background: var(--bg-alt); }
+
+    /* SERVICES */
+    .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+    }
+    .service-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0,0,0,.05);
+        transition: all .3s;
+    }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,.12); border-color: var(--accent); }
+    .service-media { height: 180px; overflow: hidden; }
+    .service-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+    .service-card:hover .service-media img { transform: scale(1.06); }
+    .service-body { padding: 24px; }
+    .service-icon {
+        width: 44px; height: 44px;
+        border-radius: 10px;
+        background: var(--primary);
+        color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        margin-bottom: 14px;
+    }
+    .service-icon svg { width: 22px; height: 22px; }
+    .service-body h3 { font-size: 1.15rem; color: var(--primary); margin-bottom: 8px; font-weight: 700; }
+    .service-body p { color: var(--text-light); font-size: 0.93rem; }
+
+    /* INSURERS */
+    .insurers-title { text-align: center; font-size: .8rem; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; color: var(--text-light); margin-bottom: 30px; }
+    .insurers-row {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 34px;
+    }
+    .insurer-logo {
+        height: 46px;
+        width: 110px;
+        display: flex; align-items: center; justify-content: center;
+        filter: grayscale(100%);
+        opacity: .65;
+        transition: all .3s;
+    }
+    .insurer-logo img { max-height: 100%; max-width: 100%; object-fit: contain; }
+    .insurer-logo:hover { filter: none; opacity: 1; }
+
+    /* PROCESS */
+    .process-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 30px;
+    }
+    .process-item { background: #fff; border-radius: 10px; padding: 34px 26px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,.05); }
+    .process-num {
+        width: 42px; height: 42px; border-radius: 50%;
+        background: var(--accent); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 800; margin: 0 auto 16px;
+    }
+    .process-item h4 { color: var(--primary); margin-bottom: 8px; font-size: 1.1rem; }
+    .process-item p { color: var(--text-light); font-size: 0.92rem; }
+
+    /* EXPERTISE */
+    .expertise-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+    .expertise-media { position: relative; }
+    .expertise-media img { width: 100%; height: 460px; object-fit: cover; border-radius: 14px; box-shadow: 0 20px 40px rgba(0,0,0,.18); }
+    .expertise-badge {
+        position: absolute; left: 24px; bottom: -22px;
+        background: var(--primary); color: #fff;
+        padding: 16px 20px; border-radius: 10px;
+        display: flex; align-items: center; gap: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,.25);
+    }
+    .expertise-badge svg { width: 26px; height: 26px; color: var(--accent); flex-shrink: 0; }
+    .expertise-badge strong { display: block; font-size: .95rem; }
+    .expertise-badge span { display: block; font-size: .75rem; opacity: .8; }
+    .expertise-text h2 { font-size: 2.1rem; color: var(--primary); font-weight: 800; margin-bottom: 20px; line-height: 1.25; }
+    .expertise-text p { color: var(--text-light); margin-bottom: 16px; }
+    .feature-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin: 28px 0; }
+    .feature-mini { display: flex; gap: 12px; align-items: flex-start; }
+    .feature-mini .ic {
+        width: 36px; height: 36px; border-radius: 8px; background: var(--bg-alt);
+        display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .feature-mini .ic svg { width: 18px; height: 18px; color: var(--success); }
+    .feature-mini strong { display: block; font-size: 0.92rem; color: var(--primary); }
+    .feature-mini span { font-size: .82rem; color: var(--text-light); }
+
+    /* TESTIMONIALS */
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; }
+    .testimonial-card { background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 28px; }
+    .stars { display: flex; gap: 3px; margin-bottom: 14px; }
+    .stars svg { width: 17px; height: 17px; fill: #f4a300; }
+    .testimonial-card p { color: #444; font-size: .95rem; font-style: italic; margin-bottom: 18px; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar {
+        width: 42px; height: 42px; border-radius: 50%;
+        background: var(--primary); color: #fff;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 700; font-size: .9rem; flex-shrink: 0;
+    }
+    .t-name { font-weight: 700; color: var(--primary); font-size: .92rem; }
+
+    /* ZONE */
+    .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; }
+    .zone-panel {
+        background: var(--primary);
+        color: #fff;
+        border-radius: 14px;
+        padding: 40px;
+        position: relative;
+        overflow: hidden;
+    }
+    .zone-panel::before {
+        content: '';
+        position: absolute; inset: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(230,57,70,.35), transparent 60%);
+    }
+    .zone-panel-inner { position: relative; z-index: 2; }
+    .zone-pin { display: flex; align-items: center; gap: 10px; margin-bottom: 22px; }
+    .zone-pin svg { width: 28px; height: 28px; color: var(--accent); }
+    .zone-pin strong { font-size: 1.15rem; }
+    .town-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; list-style: none; }
+    .town-list li { display: flex; align-items: center; gap: 8px; font-size: .92rem; opacity: .92; }
+    .town-list svg { width: 14px; height: 14px; color: var(--accent); flex-shrink: 0; }
+
+    /* CONTACT FORM */
+    .contact-wrap { max-width: 760px; margin: 0 auto; }
+    .contact-card { background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,.06); }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-field { display: flex; flex-direction: column; gap: 6px; }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label { font-size: .85rem; font-weight: 600; color: var(--primary); }
+    .form-field input, .form-field textarea {
+        border: 1px solid var(--border);
+        border-radius: 6px;
+        padding: 12px 14px;
+        font-size: .95rem;
+        font-family: inherit;
+    }
+    .form-field input:focus, .form-field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+    .form-submit { grid-column: 1 / -1; margin-top: 6px; }
+    .form-note { font-size: .8rem; color: var(--text-light); margin-top: 12px; text-align: center; }
+    .form-success { display: none; text-align: center; padding: 30px 10px; }
+    .form-success svg { width: 50px; height: 50px; color: var(--success); margin-bottom: 14px; }
+    .form-success h3 { color: var(--primary); margin-bottom: 8px; }
+    .form-success p { color: var(--text-light); }
+
+    /* FAQ */
+    .faq-list { max-width: 820px; margin: 0 auto; }
+    .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 14px; overflow: hidden; }
+    .faq-q {
+        width: 100%; background: var(--bg-alt); border: none;
+        padding: 20px 24px; text-align: left; font-weight: 700; color: var(--primary);
+        font-size: 1rem; cursor: pointer;
+        display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .faq-q svg { width: 20px; height: 20px; flex-shrink: 0; transition: transform .3s; }
+    .faq-item.active .faq-q svg { transform: rotate(45deg); }
+    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+    .faq-item.active .faq-a { max-height: 300px; }
+    .faq-a p { padding: 18px 24px; color: var(--text-light); font-size: .94rem; }
+
+    /* FOOTER */
+    footer { background: var(--primary-dark); color: #b9bdc6; padding: 40px 20px; }
+    .footer-inner { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 24px; list-style: none; flex-wrap: wrap; }
+    .footer-links a { text-decoration: none; color: #b9bdc6; font-size: .88rem; }
+    .footer-links a:hover { color: #fff; }
+    .footer-copy { font-size: .82rem; opacity: .75; }
+
+    @media (max-width: 900px) {
+        .expertise-grid, .zone-grid { grid-template-columns: 1fr; }
+        .expertise-media img { height: 320px; }
+        .main-nav { display: none; }
+        .nav-toggle { display: block; }
+        .hero h1 { font-size: 2.1rem; }
+        .form-grid { grid-template-columns: 1fr; }
+    }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+    <div class="container">
+        <div class="topbar-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Agréé toutes assurances
+        </div>
+        <div class="topbar-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Devis gratuit
+        </div>
+        <div class="topbar-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Intervention 24h/24 - 7j/7
+        </div>
+        <div class="topbar-item">
+            <svg viewBox="0 0 24 24" fill="#e63946" class="dot"><circle cx="12" cy="12" r="5"/></svg>
+            Disponibles maintenant
+        </div>
+    </div>
+</div>
+
+<header>
+    <div class="container header-inner">
+        <a href="#top" class="brand">
+            <svg viewBox="0 0 40 40" fill="none">
+                <circle cx="16" cy="16" r="9" fill="#1c1f26"/>
+                <circle cx="16" cy="16" r="4" fill="white"/>
+                <rect x="14" y="16" width="4" height="16" rx="1" fill="#1c1f26"/>
+                <rect x="19" y="24" width="7" height="4" rx="1" fill="#e63946"/>
+            </svg>
+            SERRURERIE<span>85</span>
+        </a>
+        <nav class="main-nav">
+            <a href="#services">Services</a>
+            <a href="#avis">Avis clients</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+        <a href="#devis" class="btn btn-accent">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+            Demande de devis
+        </a>
+        <button class="nav-toggle" aria-label="Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+    </div>
+</header>
+
+<section class="hero" id="top">
+    <img src="inter 30 mn.jpg" alt="" class="hero-bg">
+    <div class="hero-content">
+        <span class="eyebrow">Service 24/7</span>
+        <h1>Intervention et service de serrurerie en Vendée</h1>
+        <p class="lead">Intervention en moins de 30 minutes, devis immédiat, agréés toutes assurances. Un diagnostic clair et un tarif annoncé avant toute intervention.</p>
+        <div class="hero-actions">
+            <a href="#devis" class="btn btn-accent">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                Demande de devis
+            </a>
+            <a href="#services" class="btn btn-outline">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                Découvrir nos services
+            </a>
+        </div>
+    </div>
+</section>
+
+<section id="services">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Nos interventions et services</span>
+            <h2>Devis sans engagement établi sur place après diagnostic</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-media"><img src="serrure.jpeg" alt="Ouverture de porte"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div>
+                    <h3>Ouverture de porte</h3>
+                    <p>Intervention rapide pour ouvrir votre porte sans l'abîmer, que la clé soit perdue, cassée ou restée à l'intérieur. Service disponible en urgence 24h/24.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="porte claquer.jpeg" alt="Changement de serrure"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/></svg></div>
+                    <h3>Changement de serrure</h3>
+                    <p>Remplacement de votre ancienne serrure par un modèle plus fiable, adapté à votre porte et conforme aux normes de sécurité actuelles.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="verouiller.jpg" alt="Installation de serrure de sécurité"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></div>
+                    <h3>Installation de serrure de sécurité</h3>
+                    <p>Pose de serrures multipoints ou renforcées pour améliorer la protection de votre logement et réduire les risques d'effraction.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="effraction.jpeg" alt="Réparation après effraction"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-6 0v4"/><rect x="5" y="9" width="14" height="11" rx="2"/><path d="M9 15l2 2 4-4"/></svg></div>
+                    <h3>Réparation après effraction</h3>
+                    <p>Remise en état de votre porte et remplacement des éléments endommagés après une tentative d'intrusion ou un cambriolage.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="effraction (1).jpeg" alt="Duplication de clés"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="7" cy="15" r="4"/><path d="M10.5 12.5L21 2M17 6l3 3M14 9l2.5 2.5"/></svg></div>
+                    <h3>Duplication et reproduction de clés</h3>
+                    <p>Réalisation de doubles de clés classiques ou sécurisées, avec précision et compatibilité garantie.</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <div class="service-media"><img src="blindage.jpeg" alt="Blindage de porte"></div>
+                <div class="service-body">
+                    <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></svg></div>
+                    <h3>Blindage de porte</h3>
+                    <p>Renforcement complet de votre porte existante pour augmenter sa résistance, améliorer l'isolation et sécuriser durablement votre habitation.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-alt">
+    <div class="container">
+        <div class="section-head" style="margin-bottom:36px;">
+            <span class="eyebrow">Nos partenaires</span>
+            <h2>Agréé par les principales compagnies d'assurance</h2>
+        </div>
+        <div class="insurers-row">
+            <div class="insurer-logo"><img src="allianze.png" alt="Allianz"></div>
+            <div class="insurer-logo"><img src="Axa.jpeg" alt="Axa"></div>
+            <div class="insurer-logo"><img src="Maif.png" alt="Maif"></div>
+            <div class="insurer-logo"><img src="Maaf.png" alt="Maaf"></div>
+            <div class="insurer-logo"><img src="Matmut.png" alt="Matmut"></div>
+            <div class="insurer-logo"><img src="macif.png" alt="Macif"></div>
+            <div class="insurer-logo"><img src="Groupama.png" alt="Groupama"></div>
+            <div class="insurer-logo"><img src="Generali.png" alt="Generali"></div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Rapide et efficace</span>
+            <h2>Nos interventions en 3 étapes simples</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-item">
+                <div class="process-num">1</div>
+                <h4>Devis sur place</h4>
+                <p>Le technicien analyse votre situation : porte claquée, serrure bloquée, clé cassée, barillet endommagé ou tout dysfonctionnement de verrouillage. Un diagnostic clair vous est présenté, accompagné d'un devis gratuit et sans engagement.</p>
+            </div>
+            <div class="process-item">
+                <div class="process-num">2</div>
+                <h4>Réussite garantie</h4>
+                <p>L'intervention est réalisée avec du matériel professionnel, adapté à la nature du problème. Résultat garanti : si l'ouverture, la réparation ou le remplacement de la serrure n'est pas effectué correctement, aucune facturation ne vous est appliquée.</p>
+            </div>
+            <div class="process-item">
+                <div class="process-num">3</div>
+                <h4>Satisfait ou remboursé</h4>
+                <p>Notre engagement est simple : efficacité ou vous ne payez rien. Si l'ouverture, la réparation ou le déblocage n'est pas résolu, l'intervention est entièrement prise en charge.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-alt">
+    <div class="container">
+        <div class="expertise-grid">
+            <div class="expertise-media">
+                <img src="serrurier.jpg" alt="Serrurier professionnel">
+                <div class="expertise-badge">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <div><strong>Agréé assurances</strong><span>Toutes compagnies</span></div>
+                </div>
+            </div>
+            <div class="expertise-text">
+                <span class="eyebrow">Notre expertise</span>
+                <h2>Une équipe disponible à votre service</h2>
+                <p>Notre équipe de serruriers expérimentés intervient pour tous vos problèmes de serrurerie : porte claquée, serrure bloquée, clé cassée dans le cylindre, perte de clés, verrou endommagé ou mécanisme de fermeture défaillant.</p>
+                <p>Disponibles 24h/24 et 7j/7, nos artisans se déplacent en urgence comme sur rendez-vous, selon vos besoins, avec des tarifs transparents annoncés à l'avance.</p>
+                <div class="feature-mini-grid">
+                    <div class="feature-mini">
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div><strong>Équipe de pros</strong><span>Techniciens qualifiés</span></div>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div><strong>Devis transparent</strong><span>Sans engagement</span></div>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div><strong>Agréé assurance</strong><span>Reconnu par les compagnies</span></div>
+                    </div>
+                    <div class="feature-mini">
+                        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg></div>
+                        <div><strong>Intervention rapide</strong><span>24h/24 et 7j/7</span></div>
+                    </div>
+                </div>
+                <a href="#devis" class="btn btn-dark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Demande de devis
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="avis">
+    <div class="container">
+        <div class="section-head">
+            <span class="eyebrow">Nos avis clients</span>
+            <h2>Ils nous ont fait confiance</h2>
+        </div>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                </div>
+                <p>"Intervention rapide et très efficace. Le serrurier a ouvert ma porte en quelques minutes et a remplacé la serrure sans dégâts. Travail propre, clair et vraiment professionnel."</p>
+                <div class="t-author">
+                    <div class="t-avatar">JF</div>
+                    <div class="t-name">Julie F.</div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                </div>
+                <p>"Service rapide et impeccable. Le technicien a débloqué ma serrure immédiatement et a sécurisé la porte avec sérieux. Explications simples, intervention nette et très pro."</p>
+                <div class="t-author">
+                    <div class="t-avatar">FL</div>
+                    <div class="t-name">François L.</div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="stars">
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                    <svg viewBox="0 0 24 24"><path d="M12 2l3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1L12 2z"/></svg>
+                </div>
+                <p>"Travail soigneux et efficace. Le serrurier a résolu mon problème d'ouverture très rapidement et a remis la porte en état parfait. Intervention fiable et vraiment professionnelle."</p>
+                <div class="t-author">
+                    <div class="t-avatar">MD</div>
+                    <div class="t-name">Marc D.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section-alt">
+    <div class="container">
+        <div class="zone-grid">
+            <div>
+                <span class="eyebrow">Dans tout le département</span>
+                <h2 style="font-size:2.1rem;color:var(--primary);font-weight:800;margin-bottom:16px;">Nos zones d'intervention</h2>
+                <p style="color:var(--text-light);margin-bottom:26px;">Nos équipes se déplacent dans toute la Vendée pour intervenir rapidement, où que vous soyez.</p>
+                <a href="#devis" class="btn btn-dark">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                    Demande de devis
+                </a>
+            </div>
+            <div class="zone-panel">
+                <div class="zone-panel-inner">
+                    <div class="zone-pin">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <strong>Vendée (85)</strong>
+                    </div>
+                    <ul class="town-list">
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>La Roche-sur-Yon</li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Les Sables-d'Olonne</li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Challans</li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Fontenay-le-Comte</li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Luçon</li>
+                        <li><svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="5"/></svg>Montaigu-Vendée</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="devis">
+    <div class="container contact-wrap">
+        <div class="section-head">
+            <span class="eyebrow">Contactez-nous</span>
+            <h2>Demandez votre devis gratuit</h2>
+        </div>
+        <div class="contact-card">
+            <form id="devisForm">
+                <div class="form-grid">
+                    <div class="form-field">
+                        <label for="f-name">Votre nom</label>
+                        <input type="text" id="f-name" required>
+                    </div>
+                    <div class="form-field">
+                        <label for="f-firstname">Votre prénom</label>
+                        <input type="text" id="f-firstname">
+                    </div>
+                    <div class="form-field">
+                        <label for="f-phone">Votre téléphone</label>
+                        <input type="tel" id="f-phone" required pattern="[0-9()#&amp;+*\-=.\s]+">
+                    </div>
+                    <div class="form-field">
+                        <label for="f-email">Votre e-mail</label>
+                        <input type="email" id="f-email" required>
+                    </div>
+                    <div class="form-field full">
+                        <label for="f-message">Décrivez votre problème</label>
+                        <textarea id="f-message" rows="4"></textarea>
+                    </div>
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-accent" style="width:100%;">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                            Envoyer ma demande
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <div class="form-success" id="formSuccess">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                <h3>Merci pour votre demande</h3>
+                <p>Un membre de notre équipe vous recontactera dans les plus brefs délais.</p>
+            </div>
+            <p class="form-note">Réponse rapide, devis sans engagement.</p>
+        </div>
+    </div>
+</section>
+
+<section class="section-alt" id="faq">
+    <div class="container">
+        <div class="section-head">
+            <h2>Questions fréquentes</h2>
+        </div>
+        <div class="faq-list">
+            <div class="faq-item">
+                <button class="faq-q">
+                    Comment savoir si je dois remplacer ou réparer ma serrure ?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>La réparation suffit souvent pour une serrure bloquée, grippée ou légèrement endommagée. En revanche, un remplacement est conseillé si le mécanisme est trop usé, forcé après une tentative d'effraction ou si la serrure n'est plus suffisamment sécurisée. Le serrurier vous guide après diagnostic.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">
+                    En combien de temps un serrurier peut-il intervenir en urgence ?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>En général, un serrurier peut se déplacer en 20 à 30 minutes selon votre localisation. L'objectif est de sécuriser les lieux rapidement et d'agir sans attendre, surtout en cas de porte claquée, clé cassée ou tentative d'effraction.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">
+                    Pouvez-vous ouvrir une porte sans l'abîmer ?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Oui, dans la plupart des cas. Les serruriers utilisent des techniques non destructives (radio, crochetage, outils adaptés) pour ouvrir une porte sans causer de dégâts. Seules les serrures très endommagées ou ultra-sécurisées peuvent nécessiter un perçage.</p></div>
+            </div>
+            <div class="faq-item">
+                <button class="faq-q">
+                    Quels types de serrures pouvez-vous installer ou remplacer ?
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </button>
+                <div class="faq-a"><p>Le serrurier installe ou remplace tous les modèles : serrures multipoints, cylindres européens, serrures carénées, blindages de porte, verrous, serrures certifiées A2P, et tous systèmes de sécurité modernes.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container footer-inner">
+        <ul class="footer-links">
+            <li><a href="#">Mentions légales</a></li>
+            <li><a href="#">Politique de confidentialité</a></li>
+            <li><a href="#">Politique de cookies</a></li>
+        </ul>
+        <span class="footer-copy">© 2026 Serrurerie 85. Tous droits réservés.</span>
+    </div>
+</footer>
+
+<script>
+    document.querySelectorAll('.faq-q').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            var item = btn.closest('.faq-item');
+            var wasActive = item.classList.contains('active');
+            document.querySelectorAll('.faq-item').forEach(function (i) { i.classList.remove('active'); });
+            if (!wasActive) item.classList.add('active');
+        });
+    });
+
+    document.getElementById('devisForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+        this.style.display = 'none';
+        document.getElementById('formSuccess').style.display = 'block';
+    });
+
+    var navToggle = document.querySelector('.nav-toggle');
+    var mainNav = document.querySelector('.main-nav');
+    navToggle.addEventListener('click', function () {
+        mainNav.style.display = mainNav.style.display === 'flex' ? 'none' : 'flex';
+        mainNav.style.position = 'absolute';
+        mainNav.style.top = '100%';
+        mainNav.style.left = '0';
+        mainNav.style.right = '0';
+        mainNav.style.background = '#fff';
+        mainNav.style.flexDirection = 'column';
+        mainNav.style.padding = '16px 20px';
+        mainNav.style.borderTop = '1px solid var(--border)';
+        mainNav.style.gap = '14px';
+    });
+</script>
+
+</body>
+</html>
