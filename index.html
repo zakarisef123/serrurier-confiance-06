@@ -160,8 +160,15 @@
     .btn-outline-dark { background: transparent; color: var(--primary); padding: 13px 26px; font-size: 0.95rem; border: 2px solid var(--border); }
     .btn-outline-dark:hover { border-color: var(--primary); }
 
-    .nav-toggle { display: none; background: none; border: none; cursor: pointer; }
-    .nav-toggle svg { width: 28px; height: 28px; color: var(--primary); }
+    .nav-toggle {
+        display: none; align-items: center; justify-content: center;
+        background: none; border: none; cursor: pointer; padding: 6px;
+    }
+    .nav-toggle svg { width: 26px; height: 26px; color: var(--primary); }
+    .nav-toggle .icon-close { display: none; }
+    .nav-toggle.open .icon-burger { display: none; }
+    .nav-toggle.open .icon-close { display: block; }
+    .main-nav-cta { display: none; }
 
     /* HERO */
     .hero {
@@ -524,8 +531,32 @@
     @media (max-width: 900px) {
         .expertise-grid, .zone-grid { grid-template-columns: 1fr; }
         .expertise-media img { height: 320px; }
-        .main-nav { display: none; }
-        .nav-toggle { display: block; }
+        .header-cta { display: none; }
+        .nav-toggle { display: flex; }
+        .main-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 0;
+            overflow: hidden;
+            background: #fff;
+            border-top: 1px solid var(--border);
+            box-shadow: 0 14px 28px rgba(0,0,0,.1);
+            transition: max-height .35s ease;
+            padding: 0 20px;
+        }
+        .main-nav.open { max-height: 70vh; padding: 10px 20px 18px; overflow-y: auto; }
+        .main-nav a {
+            padding: 14px 4px;
+            border-bottom: 1px solid var(--border);
+        }
+        .main-nav a:last-child { border-bottom: none; }
+        .main-nav-cta { display: block; }
+        .main-nav a.main-nav-cta { color: var(--accent); font-weight: 800; }
         .hero h1 { font-size: 2.1rem; }
         .form-grid { grid-template-columns: 1fr; }
         .contact-options { grid-template-columns: 1fr; }
@@ -569,16 +600,19 @@
             </svg>
             URGENCE<span>UNLOCK</span>
         </a>
-        <nav class="main-nav">
+        <nav class="main-nav" id="mainNav">
             <a href="#services">Services</a>
+            <a href="#devis">Devis &amp; Contact</a>
             <a href="#avis">Avis clients</a>
             <a href="#faq">FAQ</a>
+            <a href="#devis" class="main-nav-cta">Demande de devis</a>
         </nav>
-        <a href="#devis" class="btn btn-accent">
+        <a href="#devis" class="btn btn-accent header-cta">
             Demande de devis
         </a>
-        <button class="nav-toggle" aria-label="Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <button class="nav-toggle" id="navToggle" aria-label="Menu" aria-expanded="false">
+            <svg class="icon-burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
     </div>
 </header>
@@ -1281,16 +1315,16 @@
     var navToggle = document.querySelector('.nav-toggle');
     var mainNav = document.querySelector('.main-nav');
     navToggle.addEventListener('click', function () {
-        mainNav.style.display = mainNav.style.display === 'flex' ? 'none' : 'flex';
-        mainNav.style.position = 'absolute';
-        mainNav.style.top = '100%';
-        mainNav.style.left = '0';
-        mainNav.style.right = '0';
-        mainNav.style.background = '#fff';
-        mainNav.style.flexDirection = 'column';
-        mainNav.style.padding = '16px 20px';
-        mainNav.style.borderTop = '1px solid var(--border)';
-        mainNav.style.gap = '14px';
+        var isOpen = mainNav.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    mainNav.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+            mainNav.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
     });
 </script>
 
